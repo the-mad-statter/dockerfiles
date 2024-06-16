@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 26.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 2521 2911"
+   style="enable-background:new 0 0 2521 2911;"
+   xml:space="preserve"
+   sodipodi:docname="docker-containers.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   inkscape:export-filename="dockerfiles.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs37">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</defs><sodipodi:namedview
+   id="namedview37"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="0.28546891"
+   inkscape:cx="1233.059"
+   inkscape:cy="1634.1535"
+   inkscape:window-width="1920"
+   inkscape:window-height="1027"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style1">
+	.st0{fill:#164F86;}
+	.st1{fill:#14275B;}
+	.st2{fill:#E6B35A;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#BA3224;}
+	.st5{fill:#B13728;}
+	.st6{fill:#AA3729;}
+	.st7{fill:#221819;}
+	.st8{opacity:0.1;fill:#1A171B;enable-background:new    ;}
+	.st9{opacity:0.94;}
+</style>
+<polygon
+   class="st0"
+   points="67.6,2142.9 1260.5,2831.4 2453.1,2142.9 2453.1,765.4 1260.5,76.8 67.6,765.4 "
+   id="polygon1"
+   style="display:inline" /><path
+   class="st1"
+   d="M 2521,2183.3 V 727.7 L 2420.5,669.7 1467.4,119.4 1260.5,0 1053.6,119.4 100.5,669.7 0,727.7 v 1455.7 l 100.5,58 965.1,557.2 195.2,112.5 195.2,-112.5 965.1,-557.2 z M 100.5,2128.8 V 789.1 l 1160,-669.7 v 0 l 1160,669.7 v 1339.4 l -1160,670 z"
+   id="path1"
+   style="display:inline" />
+<g
+   id="g46"
+   transform="translate(-12.867599,-122.60529)"><g
+     id="g38"
+     style="display:inline;fill:#ffffff"><path
+       fill="#066da5"
+       d="m 2126.8252,1099.6025 c 0,0 -74.0154,-69.9033 -226.1581,-45.2315 -16.4479,-119.24696 -143.9188,-189.15042 -143.9188,-189.15042 0,0 -119.2469,143.91872 -32.8957,304.28542 -24.6718,12.3359 -65.7914,28.7837 -127.4709,28.7837 H 465.59167 c -20.55982,78.1274 -20.55982,596.2349 546.89113,596.2349 407.0845,0 711.3698,-189.1504 855.2885,-534.5554 213.8223,16.4479 259.0539,-160.3667 259.0539,-160.3667"
+       id="path2"
+       style="fill:#ffffff;stroke-width:4.11197" /></g><path
+     style="display:inline;fill:#ffffff;stroke-width:2.78019"
+     d="m 590.73153,1091.7464 v -77.8452 h 84.79567 84.79567 v 77.8452 77.8453 H 675.5272 590.73153 Z"
+     id="path38" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 796.46532,1091.7879 v -77.8867 h 83.44952 83.44952 l -0.73901,77.1502 -0.739,77.1503 -82.71051,0.7363 -82.71052,0.7364 z"
+     id="path39" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 996.63863,1091.7464 v -77.8452 h 84.79567 84.7957 v 77.8452 77.8453 h -84.7957 -84.79567 z"
+     id="path40" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 1199.5922,1091.7464 v -77.8452 h 84.7957 84.7956 v 77.8452 77.8453 h -84.7956 -84.7957 z"
+     id="path41" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 1405.3259,1091.7464 v -77.8452 h 84.7957 84.7957 v 77.8452 77.8453 h -84.7957 -84.7957 z"
+     id="path42" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 1199.5922,902.69383 v -77.84521 h 84.7957 84.7956 v 77.84521 77.84522 h -84.7956 -84.7957 z"
+     id="path43" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 1199.5922,712.25113 v -76.45511 h 84.7957 84.7956 v 76.45511 76.45512 h -84.7956 -84.7957 z"
+     id="path44" /><path
+     style="display:inline;fill:#ffffff;stroke-width:2.78019"
+     d="m 996.63863,902.69383 v -77.84521 h 84.79567 84.7957 v 77.84521 77.84522 h -84.7957 -84.79567 z"
+     id="path45" /><path
+     style="fill:#ffffff;stroke-width:2.78019"
+     d="m 796.46532,902.73526 v -77.88664 h 83.44952 83.44952 l -0.73901,77.15021 -0.739,77.15012 -82.71051,0.73644 -82.71052,0.73644 z"
+     id="path46" /></g><text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:280px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff"
+   x="146.24146"
+   y="2094.7988"
+   id="text46"><tspan
+     sodipodi:role="line"
+     id="tspan46"
+     x="146.24146"
+     y="2094.7988"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:466.667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">dockerfiles</tspan></text></svg>
