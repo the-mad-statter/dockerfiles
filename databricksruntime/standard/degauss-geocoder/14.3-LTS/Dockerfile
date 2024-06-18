@@ -58,7 +58,7 @@ RUN R -e "options(repos = list(CRAN = 'https://packagemanager.posit.co/cran/late
 # Install R Libraries for entrypoint.R 
 RUN R -e "install.packages(c('docopt', 'knitr', 'jsonlite', 'remotes'), repos = 'https://cloud.r-project.org')" \
   && R -e "remotes::install_github('degauss-org/dht')" \
-  && R -e "remotes::install_github('the-mad-statter/mappp@dev')"
+  && R -e "remotes::install_github('cole-brokamp/mappp')"
 
 # Copy
 RUN mkdir /app
