@@ -1,0 +1,21 @@
+FROM ghcr.io/washu-it-ris/rstudio:4.5.1-rocky9.2
+
+#RUN touch /etc/rc.d/init.d/functions
+
+#RUN dnf install -y unixODBC unixODBC-devel cyrus-sasl cyrus-sasl-gssapi
+
+#RUN mkdir /simbaspark && \
+#    cd /simbaspark && \
+#    wget https://databricks-bi-artifacts.s3.us-east-2.amazonaws.com/simbaspark-drivers/odbc/2.9.1/SimbaSparkODBC-2.9.1.1001-LinuxRPM-64bit.zip && \
+#    unzip SimbaSparkODBC-2.9.1.1001-LinuxRPM-64bit.zip && \
+#    dnf install -y simbaspark-2.9.1.1001-1.x86_64.rpm
+    
+#RUN /usr/local/bin/R -e "install.packages(c('DBI', 'odbc'), repos = c(CRAN = 'https://cloud.r-project.org'))"
+
+#COPY odbc.ini /etc/
+
+#COPY odbc_test.Rmd /home/schuelke
+
+#CMD ["/usr/lib/rstudio-server/bin/rserver", "--server-daemonize=0"]
+
+CMD /usr/lib/rstudio-server/bin/rserver --www-port 8787 --server-daemonize 0 --server-user=schuelke --database-config-file=/tmp/db.conf --auth-none 1 --auth-pam-helper-path /home/schuelke/ondemand/data/sys/dashboard/batch_connect/sys/rstudio/output/80ef6a12-e74e-40b8-af1d-0483fec20959/bin/auth --auth-encrypt-password 0 --rsession-path /home/schuelke/ondemand/data/sys/dashboard/batch_connect/sys/rstudio/output/80ef6a12-e74e-40b8-af1d-0483fec20959/rsession.sh

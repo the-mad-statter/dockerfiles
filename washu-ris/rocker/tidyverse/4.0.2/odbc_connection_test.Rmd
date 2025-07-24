@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-02-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(DBI)
+
+databricks_token <- ""
+```
+
+```{r}
+con <- DBI::dbConnect(odbc::odbc(), dsn = "Wilcox Lab SQL01", pwd = databricks_token)
+
+DBI::dbGetQuery(con, "SELECT * FROM CLEANSED.EPIC_CLARITY_ORGFILTER.PATIENT LIMIT 3;")
+
+DBI::dbDisconnect(con)
+```

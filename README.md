@@ -15,13 +15,13 @@ A repository of docker files.
 ### Build
 
 ```
-docker build -t username/container-name:tag directory
+docker build -t ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} ${DIRECTORY}
 ```
 
 ### Push
 
 ```
-docker push username/container-name:tag
+docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG}
 ```
 
 <br />
