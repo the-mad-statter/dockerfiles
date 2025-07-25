@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # map desired volumes to mount locations
-VOLUMES_MAPS=(
+VOLUME_MAPS=(
     "/home/schuelke:/home/schuelke"
     "/storage2/fs1/a.wilcox/Active:/storage2/fs1/a.wilcox/Active"
     "/home/schuelke/rstudio_db/:/var/lib/rstudio-server"
