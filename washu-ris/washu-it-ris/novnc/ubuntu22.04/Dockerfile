@@ -40,3 +40,5 @@ RUN wget https://databricks-bi-artifacts.s3.us-east-2.amazonaws.com/simbaspark-d
     unzip SimbaSparkODBC-2.9.1.1001-Debian-64bit.zip && \
     dpkg -i simbaspark_2.9.1.1001-2_amd64.deb && \
     rm simbaspark_2.9.1.1001-2_amd64.deb SimbaSparkODBC-2.9.1.1001-Debian-64bit.zip
+
+COPY odbc.ini /etc/odbc.ini

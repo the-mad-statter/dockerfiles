@@ -1,0 +1,5 @@
+d <- sprintf("/home/schuelke/lib/R/%s.%s/", R.version$major, R.version$minor)
+if (!file.exists(d))
+    dir.create(d, recursive = TRUE)
+.libPaths(c(d, .libPaths()))
+rm(d)
