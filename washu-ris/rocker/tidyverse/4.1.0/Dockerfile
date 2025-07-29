@@ -18,4 +18,4 @@ RUN apt-get install -y libsasl2-modules-gssapi-mit && \
 RUN R -e "install.packages(c('DBI', 'odbc'))"
 
 # 5. copy system data source
-COPY odbc.ini /etc/
+COPY odbc.ini /etc/odbci.ini
