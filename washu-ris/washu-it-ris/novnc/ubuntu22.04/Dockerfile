@@ -40,20 +40,3 @@ RUN wget https://databricks-bi-artifacts.s3.us-east-2.amazonaws.com/simbaspark-d
     unzip SimbaSparkODBC-2.9.1.1001-Debian-64bit.zip && \
     dpkg -i simbaspark_2.9.1.1001-2_amd64.deb && \
     rm simbaspark_2.9.1.1001-2_amd64.deb SimbaSparkODBC-2.9.1.1001-Debian-64bit.zip
-    
-COPY odbc.ini /etc/odbc.ini
-
-COPY db.conf /tmp/db.conf
-
-# was there, but variations of rserver command failed with unauth sql error
-#COPY rserver.conf /etc/rstudio/rserver.conf
-
-# make directory to use for server-data-dir and secure-cookie-key-file arguments
-RUN mkdir -p /tmp/rstudio-data
-
-# ???
-RUN mkdir -p /tmp/rstudio-db
-
-# /usr/lib/rstudio-server/bin/rserver --www-port 8787 --server-daemonize 0 --server-user=schuelke --database-config-file=/tmp/db.conf --server-data-dir=/tmp/rstudio-data --secure-cookie-key-file=/tmp/rstudio-data/secure-cookie-key --auth-none 1
-
-# /usr/lib/rstudio-server/bin/rserver --www-port=8787 --server-daemonize=0 --server-user=schuelke --database-config-file=/tmp/db.conf --server-data-dir=/tmp/rstudio-data --secure-cookie-key-file=/tmp/rstudio-data/secure-cookie-key --auth-none=1
