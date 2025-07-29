@@ -1,5 +1,7 @@
 FROM ghcr.io/washu-it-ris/novnc:ubuntu22.04
 
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
@@ -17,14 +19,17 @@ RUN apt-get update && \
         libpq5 \
         libssl-dev \
         libxml2-dev \
+        locales \
         psmisc \
         software-properties-common \
         sudo \
         wget \
         libsasl2-modules-gssapi-mit \
         odbcinst \
-        unixodbc-dev \
-    && rm -rf /var/lib/apt/lists/*
+        unixodbc-dev && \
+    rm -rf /var/lib/apt/lists/* && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8
 
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | apt-key add - && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/" && \
