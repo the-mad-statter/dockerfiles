@@ -45,10 +45,14 @@ COPY odbc.ini /etc/odbc.ini
 
 COPY db.conf /tmp/db.conf
 
+# was there, but variations of rserver command failed with unauth sql error
 #COPY rserver.conf /etc/rstudio/rserver.conf
 
-RUN mkdir -p /tmp/rstudio-data && \
-    mkdir -p /tmp/rstudio-db
+# make directory to use for server-data-dir and secure-cookie-key-file arguments
+RUN mkdir -p /tmp/rstudio-data
+
+# ???
+RUN mkdir -p /tmp/rstudio-db
 
 # /usr/lib/rstudio-server/bin/rserver --www-port 8787 --server-daemonize 0 --server-user=schuelke --database-config-file=/tmp/db.conf --server-data-dir=/tmp/rstudio-data --secure-cookie-key-file=/tmp/rstudio-data/secure-cookie-key --auth-none 1
 
