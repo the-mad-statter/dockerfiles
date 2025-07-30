@@ -1,7 +1,6 @@
 name: Build & Push Changed washu-caci-ignite Images
 
 on:
-  workflow_dispatch:
   push:
     branches: main
     paths: washu-caci-ignite/**
@@ -13,6 +12,8 @@ jobs:
       tags: ${{ steps.set-matrix.outputs.tags }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Detect changed washu-caci-ignite tags
         id: set-matrix
