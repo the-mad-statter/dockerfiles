@@ -68,4 +68,3 @@ Then you can start RStudio with:
 ```
 ./run_rserver.sh
 ```
-

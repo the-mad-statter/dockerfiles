@@ -25,8 +25,8 @@ jobs:
           # Extract unique subdirectories (tag names)
           TAGS=$(echo "$CHANGED" | cut -d/ -f2 | sort -u)
           
-          # Convert to JSON array for matrix
-          TAGS_JSON=$(echo "$TAGS" | jq -R . | jq -s .)
+          # Convert to minified JSON array for matrix
+          TAGS_JSON=$(echo "$TAGS" | jq -R . | jq -s -c .)
           
           echo "Detected tags: $TAGS_JSON"
           echo "tags=$TAGS_JSON" >> $GITHUB_OUTPUT
