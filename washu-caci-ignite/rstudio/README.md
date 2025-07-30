@@ -17,9 +17,19 @@ This docker file extends ghcr.io/washu-it-ris/novnc:ubuntu22.04:
 
 Run as a Custom noVNC Image in [Open OnDemand](https://ood.ris.wustl.edu/pun/sys/dashboard/batch_connect/sys/custom_novnc_image/session_contexts/new).
 
-Set Docker Image field as "docker.io/themadstatter/washu-caci-ignite:rstudio"
+### Docker Image Field
 
-Special note to pay attention to the "Number of hours" field as your job will terminate at that time.
+```
+docker.io/themadstatter/washu-caci-ignite:rstudio
+```
+
+### Number of hours Field
+
+Ensure a sufficient number of hours as the job will terminate at the given time.
+
+### RStudio
+
+See example script for how to start RStudio and connect at `http://localhost:8787`.
 
 ## Optional Prerequisites
 
