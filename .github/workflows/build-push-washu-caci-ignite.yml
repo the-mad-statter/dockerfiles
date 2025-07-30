@@ -48,6 +48,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_NAME="docker.io/washu-caci-ignite:${{ matrix.tag }}"
+          IMAGE_NAME="docker.io/themadstatter/washu-caci-ignite:${{ matrix.tag }}"
           docker build -t $IMAGE_NAME ./washu-caci-ignite/${{ matrix.tag }}
           docker push $IMAGE_NAME
