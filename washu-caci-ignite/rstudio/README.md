@@ -1,23 +1,23 @@
-# washu-ris-washu-it-ris-novnc:ubuntu22.04
+# washu-caci-ignite:rstudio
 
 ## Overview
 
 This docker file extends ghcr.io/washu-it-ris/novnc:ubuntu22.04:
 
-1. r-base (v4.5.1 at the moment)
+1. r-base (v4.5.1)
 2. RStudio Server (v2025.05.1-513)
-3. Simba Spark ODBC Driver
+3. Simba Spark ODBC Driver (v2.9.1)
 4. System DSN file with entry for SQL warehouse "Wilcox Lab SQL01" on Databricks
 
 ## Hosted
 
-[docker.io/themadstatter/washu-ris-washu-it-ris-novnc](https://hub.docker.com/repository/docker/themadstatter/washu-ris-washu-it-ris-novnc/general)
+[docker.io/themadstatter/washu-caci-ignite:rstudio](https://hub.docker.com/repository/docker/themadstatter/washu-caci-ignite/tags/rstudio)
 
 ## Usage
 
 Run as a Custom noVNC Image in [Open OnDemand](https://ood.ris.wustl.edu/pun/sys/dashboard/batch_connect/sys/custom_novnc_image/session_contexts/new).
 
-Set Docker Image field as "docker.io/themadstatter/washu-ris-washu-it-ris-novnc:ubuntu22.04"
+Set Docker Image field as "docker.io/themadstatter/washu-caci-ignite:rstudio"
 
 Special note to pay attention to the "Number of hours" field as your job will terminate at that time.
 
