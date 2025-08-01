@@ -15,37 +15,56 @@ This docker file extends ghcr.io/washu-it-ris/novnc:ubuntu22.04:
 
 ## Usage
 
+There are two usage options: (1) via Open OnDemand or (2) as an interactive job.
+
+### Usage 1: Open OnDemand
+
 Run as a Custom noVNC Image in [Open OnDemand](https://ood.ris.wustl.edu/pun/sys/dashboard/batch_connect/sys/custom_novnc_image/session_contexts/new).
 
-### Docker Image Field
+#### Docker Image Field
 
 ```
 docker.io/themadstatter/washu-caci-ignite:rstudio
 ```
 
-### Number of hours Field
+#### Number of hours Field
 
 Ensure a sufficient number of hours as the job will terminate at the given time.
 
-### RStudio
+#### Launch Custom noVNC Image
 
-See example script for how to start RStudio and connect at `http://localhost:8787`.
+Once the job is scheduled and started, click the button to "Launch Custom noVNC Image".
 
-## Optional Prerequisites
+#### Start RStudio
 
-### .Rprofile
+See the "Example Script to Run RStudio" section and/or [run_rserver.sh](run_rserver.sh) for how to start RStudio.
 
-Edit and add the following to your `~/.Rprofile` to set your library location to use storage:
+#### Connect to RStudio
+
+Use Firefox in the container to visit `http://localhost:8787`.
+
+### Usage 2: Interactive Session
+
+#### Schedule Interactive Job
 
 ```
-d <- sprintf("/home/${user}/lib/R/%s.%s/", R.version$major, R.version$minor)
-if (!file.exists(d))
-    dir.create(d, recursive = TRUE)
-.libPaths(c(d, .libPaths()))
-rm(d)
+export LSF_DOCKER_NETWORK=host
+export LSF_DOCKER_VOLUMES='/home/${USER}:/home/${USER} /storage${N}/fs1/${VOLUME}/Active:/storage${N}/fs1/${VOLUME}/Active'
+LSF_DOCKER_PORTS='${PORT}:8787'
+bsub -Is -G ${GROUP} -q ${QUEUE} -R 'select[port${PORT}=1]' -a 'docker(themadstatter/washu-caci-ignite:rstudio)' /bin/bash
 ```
 
-See also an example [.Rprofile](.Rprofile).
+See also [example_submission_script.sh](example_submission_script.sh).
+
+#### Start RStudio
+
+See the "Example Script to Run RStudio" section and/or [run_rserver.sh](run_rserver.sh) for how to start RStudio.
+
+#### Connect to RStudio
+
+Use any web browser on your local machine to visit http://compute${N}-exec-${NODE}.ris.wustl.edu:${PORT}
+
+## Prerequisites (Optional but Recomended)
 
 ### Example Script to Run RStudio
 
@@ -78,3 +97,17 @@ Then you can start RStudio with:
 ```
 ./run_rserver.sh
 ```
+
+### .Rprofile
+
+Edit and add the following to your `~/.Rprofile` to set your library location to use storage:
+
+```
+d <- sprintf("/home/${user}/lib/R/%s.%s/", R.version$major, R.version$minor)
+if (!file.exists(d))
+    dir.create(d, recursive = TRUE)
+.libPaths(c(d, .libPaths()))
+rm(d)
+```
+
+See also an example [.Rprofile](.Rprofile).
