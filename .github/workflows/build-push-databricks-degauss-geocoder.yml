@@ -1,0 +1,53 @@
+name: Build & Push Changed databricks-degauss-geocoder Images
+
+on:
+  push:
+    branches: main
+    paths: databricks-degauss-geocoder/**
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.set-matrix.outputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed washu-caci-ignite tags
+        id: set-matrix
+        run: |
+          echo "Looking for changed directories..."
+          # Get all changed files under databricks-degauss-geocoder
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^databricks-degauss-geocoder/')
+          
+          # Extract unique subdirectories (tag names)
+          TAGS=$(echo "$CHANGED" | cut -d/ -f2 | sort -u)
+          
+          # Convert to minified JSON array for matrix
+          TAGS_JSON=$(echo "$TAGS" | jq -R . | jq -s -c .)
+          
+          echo "Detected tags: $TAGS_JSON"
+          echo "tags=$TAGS_JSON" >> $GITHUB_OUTPUT
+
+  build-and-push:
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ${{ fromJson(needs.detect-changes.outputs.tags) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to Docker registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE_NAME="docker.io/themadstatter/databricks-degauss-geocoder:${{ matrix.tag }}"
+          docker build -t $IMAGE_NAME ./databricks-degauss-geocoder/${{ matrix.tag }}
+          docker push $IMAGE_NAME
