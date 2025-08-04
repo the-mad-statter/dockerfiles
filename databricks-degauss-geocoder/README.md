@@ -4,7 +4,7 @@ Extensions of [databricksruntime/standard](https://github.com/databricks/contain
 
 # Images
 
-These images are available on [Docker Hub](https://hub.docker.com/repository/docker/themadstatter/databricksruntime-standard-degauss-geocoder/general).
+These images are available on [Docker Hub](https://hub.docker.com/repository/docker/themadstatter/databricks-degauss-geocoder/general).
 
 # Databricks Notebook Examples
 

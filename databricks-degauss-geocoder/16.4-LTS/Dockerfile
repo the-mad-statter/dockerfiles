@@ -18,16 +18,17 @@ LABEL "org.degauss.argument"="${degauss_argument}"
 # Install Linux packages
 RUN apt-get update \
   && apt-get install --yes \
+    bison \
     flex \
- 	libcurl4-openssl-dev \
- 	libsqlite3-dev \
-	libssh2-1-dev \
-	libssl-dev \
-	libxml2-dev \
-	make \
-	pkg-config \
-	ruby-dev \
-	sqlite3 \
+ 	  libcurl4-openssl-dev \
+ 	  libsqlite3-dev \
+	  libssh2-1-dev \
+	  libssl-dev \
+	  libxml2-dev \
+	  make \
+	  pkg-config \
+	  ruby-dev \
+	  sqlite3 \
   && apt-get clean
 
 RUN gem install sqlite3 json Text

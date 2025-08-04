@@ -10,22 +10,6 @@ A repository of docker files.
 
 <br />
 
-## Usage
-
-### Build
-
-```
-docker build -t ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} ${DIRECTORY}
-```
-
-### Push
-
-```
-docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG}
-```
-
-<br />
-
 ## Code of Conduct
 
 Please note that the dockerfiles project is released with a [Contributor Code
@@ -37,14 +21,23 @@ By contributing to this project, you agree to abide by its terms.
 
 ## About
 
-### Washington University in Saint Louis <img src="img/brookings_seal.png" align="right" width="125px"/>
+### The Mad Statter <img src="img/themadstatter.png" align="right" width="125px"/>
 
-Established in 1853, [Washington University in Saint
-Louis](https://www.wustl.edu) is among the world’s leaders in teaching,
-research, patient care, and service to society. Boasting 24 Nobel
-laureates to date, the University is ranked 7th in the world for most
-cited researchers, received the 4th highest amount of NIH medical
-research grants among medical schools in 2019, and was tied for 1st in
-the United States for genetics and genomics in 2018. The University is
-committed to learning and exploration, discovery and impact, and
-intellectual passions and challenging the unknown.
+[The Mad Statter](https://www.themadstatter.com) is a premier
+statistical consulting and programming firm dedicated to delivering
+rigorous, data-driven solutions tailored to meet the unique needs of
+researchers, businesses, and organizations. Combining deep expertise in
+statistics, advanced programming skills, and industry best practices,
+The Mad Statter empowers clients to unlock insights, optimize
+decision-making, and drive impactful outcomes.
+
+Our services span study design, data management, statistical analysis,
+predictive modeling, and visualization, leveraging a wide range of
+software platforms and programming languages. Whether supporting
+academic research, clinical trials, market research, or operational
+analytics, The Mad Statter provides clear, actionable results with an
+emphasis on quality, transparency, and collaboration.
+
+At The Mad Statter, we are passionate about transforming complex data
+challenges into streamlined, understandable solutions helping you make
+smarter decisions with confidence.

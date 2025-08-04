@@ -39,6 +39,12 @@ jobs:
         tag: ${{ fromJson(needs.detect-changes.outputs.tags) }}
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Checkout degauss-org/geocoder
+        uses: actions/checkout@v4
+        with:
+          repository: degauss-org/geocoder
+          path: ./databricks-degauss-geocoder/${{ matrix.tag }}
 
       - name: Log in to Docker registry
         uses: docker/login-action@v3
