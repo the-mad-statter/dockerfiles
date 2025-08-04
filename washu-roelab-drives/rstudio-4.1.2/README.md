@@ -1,4 +1,4 @@
-# washu-ris-ris-registry-shared-rstudio:4.1.2
+# washu-roelab-drives:rstudio-4.1.2
 
 ## Overview
 
@@ -21,7 +21,7 @@ This docker file extends [gcr.io/ris-registry-shared/rstudio:4.1.2](https://cons
 
 ## Hosted
 
-[docker.io/themadstatter/washu-ris-ris-registry-shared-rstudio:4.1.2](https://hub.docker.com/repository/docker/themadstatter/washu-ris-ris-registry-shared-rstudio/general)
+[docker.io/themadstatter/washu-roelab-drives](https://hub.docker.com/repository/docker/themadstatter/washu-roelab-drives/general)
 
 ## Prerequisites
 
