@@ -15,15 +15,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect changed washu-caci-ignite tags
+      - name: Detect changed tags
         id: set-matrix
         run: |
           echo "Looking for changed directories..."
           # Get all changed files under databricks-degauss-geocoder
           CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^databricks-degauss-geocoder/')
           
-          # Extract unique subdirectories (tag names)
-          TAGS=$(echo "$CHANGED" | cut -d/ -f2 | sort -u)
+          # Extract only first-level subdirectories (exclude files directly under base)
+          TAGS=$(echo "$CHANGED" | grep -E '^databricks-degauss-geocoder/[^/]+/' | cut -d/ -f2 | sort -u)
           
           # Convert to minified JSON array for matrix
           TAGS_JSON=$(echo "$TAGS" | jq -R . | jq -s -c .)
