@@ -14,6 +14,8 @@ RUN apt-get update && \
         libclang-dev \
         libcurl4-openssl-dev \
         libfontconfig1-dev \
+        libfribidi-dev \
+        libharfbuzz-dev \
         libjpeg-dev \
         libpng-dev \
         libpq5 \
