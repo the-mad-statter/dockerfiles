@@ -14,12 +14,14 @@ RUN apt-get update && \
         libclang-dev \
         libcurl4-openssl-dev \
         libfontconfig1-dev \
+        libfreetype6-dev \
         libfribidi-dev \
         libharfbuzz-dev \
         libjpeg-dev \
         libpng-dev \
         libpq5 \
         libssl-dev \
+        libtiff5-dev \
         libxml2-dev \
         locales \
         psmisc \
