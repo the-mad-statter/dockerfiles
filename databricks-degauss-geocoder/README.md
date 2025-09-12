@@ -174,7 +174,19 @@ df = df.drop(columns = ['json']).join(pd.json_normalize(df['json']))
 df.to_csv(csv_out)
 ```
 
-## Read and Write Data Lake
+## Read and Write Data Lake (Regular UDF)
+
+1. Each row of the DataFrame is serialized from the JVM to Python.
+2. The Python function is called row-by-row.
+3. The result is serialized back to the JVM.
+4. Spark distributes tasks based on partitions, but each row in a task is processed sequentially in Python.
+
+Pros:
+1. Simple to use.
+2. Works with any Python code.
+
+Cons:
+1. Slower, because: row-at-a-time processing and serialization overhead per row
 
 ```
 %python
@@ -233,6 +245,100 @@ geocodeUDF = udf(lambda x:geocode(x), ArrayType(MapType(StringType(), StringType
     spark
     .sql("SELECT * FROM sandbox.wilcox_lab.degauss_geocoder_my_address_file")
     .withColumn("geocode_results", geocodeUDF(col("address")))
+    # expand data longer (some addresses will return multiple geocode results)
+    .withColumn("geocode_results", explode(col("geocode_results")))
+    # expand data wider
+    .withColumn("street", col("geocode_results")["street"])
+    .withColumn("zip", col("geocode_results")["zip"])
+    .withColumn("city", col("geocode_results")["city"])
+    .withColumn("state", col("geocode_results")["state"])
+    .withColumn("lat", col("geocode_results")["lat"])
+    .withColumn("lon", col("geocode_results")["lon"])
+    .withColumn("fips_county", col("geocode_results")["fips_county"])
+    .withColumn("score", col("geocode_results")["score"])
+    .withColumn("prenum", col("geocode_results")["prenum"])
+    .withColumn("number", col("geocode_results")["number"])
+    .withColumn("precision", col("geocode_results")["precision"])
+    .withColumn("error", col("geocode_results")["error"])
+    # geocode_results are no longer needed
+    .drop("geocode_results")
+    .writeTo("sandbox.wilcox_lab.degauss_geocoder_my_address_file_out")
+    .createOrReplace()
+)
+```
+
+## Read and Write Data Lake (Vectorized UDF)
+
+1. Spark sends a batch of rows from the JVM to Python using Apache Arrow (columnar format).
+2. The Python function receives a Pandas Series or Pandas DataFrame.
+3. Process the batch at once and return a Pandas Series/DataFrame.
+4. Spark converts it back to the JVM column.
+
+Pros:
+1. Much faster than row-at-a-time UDFs.
+2. Reduces serialization overhead because data is transferred in batches.
+3. Can utilize multiple cores per executor more efficiently.
+4. Better for vectorized operations (like str.upper(), numeric computations, or batch I/O).
+
+Cons:
+1. Must use Pandas-compatible operations inside the function.
+2. Each batch is still processed in a single Python process per executor.
+
+```
+%python
+
+import urllib.request
+import json
+import pandas as pd
+import subprocess
+from pyspark.sql.functions import col, pandas_udf, explode
+from pyspark.sql.types import ArrayType, MapType, StringType
+
+# download an example csv input file
+urllib.request.urlretrieve(
+    "https://raw.githubusercontent.com/degauss-org/geocoder/master/test/my_address_file.csv", 
+    "/Workspace/Users/schuelke@wustl.edu/my_address_file.csv"
+)
+
+# read the example csv input file and write to lake
+(
+    spark
+    .read
+    .format("csv")
+    .option("header", True)
+    .load("file:/Workspace/Users/schuelke@wustl.edu/my_address_file.csv") # path must be absolute
+    .writeTo("sandbox.wilcox_lab.degauss_geocoder_my_address_file")
+    .createOrReplace()
+)
+
+# define a geocoding function
+def geocode(address: str):
+    """
+    Geocode an address using DeGAUSS Geocoder.
+    Returns a list of dicts [{...}] or [{"error": "..."}]
+    """
+    try:
+        result = json.loads(subprocess.run(["ruby", "/app/geocode.rb", address], capture_output=True).stdout.decode())
+        result = [{k: str(v) for k, v in d.items()} for d in result]
+    except Exception as e:
+        result = [{"error": str(e)}]
+    return result
+
+# create a pandas user defined function version of geocode() so that it can be applied to a pyspark dataframe
+@pandas_udf(ArrayType(MapType(StringType(), StringType())))
+def geocode_batch(addresses: pd.Series) -> pd.Series:
+    results = []
+    for addr in addresses:
+        results.append(geocode(addr))
+    return pd.Series(results)
+
+# process the data
+(
+    spark
+    .sql("SELECT * FROM sandbox.wilcox_lab.degauss_geocoder_my_address_file")
+    # ensure table is adequately partitioned for parallel processing
+    .repartition(10, col("address"))
+    .withColumn("geocode_results", geocode_batch(col("address")))
     # expand data longer (some addresses will return multiple geocode results)
     .withColumn("geocode_results", explode(col("geocode_results")))
     # expand data wider
