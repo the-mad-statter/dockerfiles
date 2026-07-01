@@ -3,7 +3,7 @@
 #SBATCH -p general-cpu
 #SBATCH -J lmstudio-server
 #SBATCH --mem=16G
-#SBATCH --time=2-00:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH -o lmstudio_%j.log
 
 export CONTAINER_IMAGE='themadstatter/washu-sph-lmstudio:latest'
